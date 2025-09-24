@@ -5,13 +5,13 @@ import io
 
 img=Image.open("brand.avif")
 buf=io.BytesIO()
-img.save(buf,format="JPG")
+img.save(buf,format="JPEG")
 buf.seek(0)
 st.set_page_config(page_title="AI Chatbot Demo",page_icon="🤖",layout="wide")
 
 col1,col2,col3=st.columns([1,1,1])
 with col2:
-    st.image(buf,output_format="JPG",use_container_width=True)
+    st.image(buf,output_format="JPEG",use_container_width=True)
 st.title("Demo: AI Assistant for Your Business")
 st.markdown("Demo Version - Token usage is limited by your demo token.")
 st.markdown("This is a demo showcase. Contact us to unlock unlimited chats, training on your data, and full customization!")
@@ -56,4 +56,5 @@ else:
         except Exception:
 
             st.error("Request failed.")
+
 
