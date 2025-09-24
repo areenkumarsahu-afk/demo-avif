@@ -10,13 +10,26 @@ img.save(buf,format="JPEG")
 buf.seek(0)
 st.set_page_config(page_title="AI Chatbot Demo",page_icon="🤖",layout="wide")
 
-col1,col2,col3=st.columns([1,2,1])
-with col2:
-    st.image(buf,output_format="JPEG")
+st.markdown(
+    """
+    <style>
+    .centered {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh;
+    text-align: center;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+st.image(buf,output_format="JPEG")
 st.title("Demo: AI Assistant for Your Business")
 st.markdown("Demo Version - Token usage is limited by your demo token.")
 st.markdown("This is a demo showcase. Contact us to unlock unlimited chats, training on your data, and full customization!")
-
+st.markdown("</div>",unsafe_allow_html=True)
 BASE_URL="https://backend-new-2-s745.onrender.com"
 
 query_params=st.query_params
@@ -57,6 +70,7 @@ else:
         except Exception:
 
             st.error("Request failed.")
+
 
 
 
