@@ -4,7 +4,7 @@ from PIL import Image
 import io
 
 img=Image.open("brand.avif")
-img=img.resize((175,175))
+img=img.resize((125,125))
 buf=io.BytesIO()
 img.save(buf,format="JPEG")
 buf.seek(0)
@@ -57,6 +57,7 @@ else:
         except Exception:
 
             st.error("Request failed.")
+
 
 
 
