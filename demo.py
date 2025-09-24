@@ -6,7 +6,7 @@ import io
 
 img=Image.open("brand.avif")
 if img.format.lower()=="avif":
-    img=img.covert("RGB")
+    img=img.convert("RGB")
     ext="JPEG"
     mime="image/jpeg"
 else:
@@ -83,4 +83,5 @@ else:
                     pass
         except Exception:
             st.error("Request failed.")
+
 
