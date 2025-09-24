@@ -1,6 +1,7 @@
 import streamlit as st 
 import requests
 from PIL import Image
+import io
 
 img=Image.open("brand.avif")
 buf=io.BytesIO()
@@ -55,3 +56,4 @@ else:
         except Exception:
 
             st.error("Request failed.")
+
