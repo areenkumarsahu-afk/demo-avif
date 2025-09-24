@@ -10,7 +10,7 @@ img.save(buf,format="JPEG")
 buf.seek(0)
 st.set_page_config(page_title="AI Chatbot Demo",page_icon="🤖",layout="wide")
 
-col1,col2,col3=st.columns([1,1,1])
+col1,col2,col3=st.columns([1,2,1])
 with col2:
     st.image(buf,output_format="JPEG")
 st.title("Demo: AI Assistant for Your Business")
@@ -57,6 +57,7 @@ else:
         except Exception:
 
             st.error("Request failed.")
+
 
 
 
