@@ -1,13 +1,22 @@
 import streamlit as st 
 import requests
 from PIL import Image
+import base64
 import io
 
 img=Image.open("brand.avif")
-img=img.resize((175,175))
+if img.format.lower()=="avif":
+    img=img.covert("RGB")
+    ext="JPEG"
+    mime="image/jpeg"
+else:
+    ext=img.format if img.format else "PNG"
+    mime=f"image/{ext.lower()}"
 buf=io.BytesIO()
 img.save(buf,format="JPEG")
 buf.seek(0)
+img_bytes=buf.getvalue()
+img_base64=base64.b64encode(img_bytes).decode()
 st.set_page_config(page_title="AI Chatbot Demo",page_icon="🤖",layout="wide")
 
 st.markdown(
@@ -25,12 +34,16 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
-st.markdown('<div class="centered">',unsafe_allow_html=True)
-st.image(buf,output_format="JPEG")
-st.title("Demo: AI Assistant for Your Business")
-st.markdown("Demo Version - Token usage is limited by your demo token.")
-st.markdown("This is a demo showcase. Contact us to unlock unlimited chats, training on your data, and full customization!")
-st.markdown('</div>',unsafe_allow_html=True)
+st.markdown(
+    f"""
+    <div class="centered">
+    <img src="data:image/jpeg;base64,{img_base64}" style="width:160px;">
+    <h1>Demo: AI Assistant for Your Business</h1>
+    <p>Demo Version - Token usage is limited by your demo token.</p>
+    <p>This is a demo showcase.Contact us to unlock unlimited chats, training on your data, and full customization!</p>
+    </div>
+    """,
+    unsafe_allow_html=True)
 BASE_URL="https://backend-new-2-s745.onrender.com"
 
 query_params=st.query_params
@@ -69,13 +82,4 @@ else:
                 except Exception:
                     pass
         except Exception:
-
             st.error("Request failed.")
-
-
-
-
-
-
-
-
