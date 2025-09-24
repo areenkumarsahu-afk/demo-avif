@@ -22,14 +22,14 @@ st.set_page_config(page_title="AI Chatbot Demo",page_icon="🤖",layout="wide")
 st.markdown(
     """
     <style>
-    .centered {
+    .centered {{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     min-height: 70vh;
     text-align: center;
-    }
+    }}
     </style>
     """,
     unsafe_allow_html=True
@@ -83,3 +83,4 @@ else:
                     pass
         except Exception:
             st.error("Request failed.")
+
