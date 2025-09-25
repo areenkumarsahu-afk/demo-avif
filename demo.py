@@ -20,24 +20,16 @@ img_base64=base64.b64encode(img_bytes).decode()
 st.set_page_config(page_title="AI Chatbot Demo",page_icon="🤖",layout="wide")
 
 st.markdown(
-    """
-    <style>
-    .centered {{
+    f"""
+    <div style="
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     min-height: 70vh;
     text-align: center;
-    }}
-    </style>
-    """,
-    unsafe_allow_html=True
-)
-st.markdown(
-    f"""
-    <div class="centered">
-    <img src="data:image/jpeg;base64,{img_base64}" style="width:160px;">
+    ">
+    <img src="data:{mime};base64,{img_base64}" style="width: 160px;" />
     <h1>Demo: AI Assistant for Your Business</h1>
     <p>Demo Version - Token usage is limited by your demo token.</p>
     <p>This is a demo showcase.Contact us to unlock unlimited chats, training on your data, and full customization!</p>
@@ -83,5 +75,6 @@ else:
                     pass
         except Exception:
             st.error("Request failed.")
+
 
 
